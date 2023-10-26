@@ -1,12 +1,12 @@
+// App.jsx
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import ImageList from "./ImageList.jsx";
+import FillFalseArray from "./FillFalseArray.jsx";
 
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [clickedItems, setClickedItems] = useState([]);
 
   return (
     <>
@@ -15,6 +15,11 @@ function App() {
       </div>
       <div className="displayCards">
         <ImageList />
+        <FillFalseArray
+          clickedItems={clickedItems}
+          setClickedItems={setClickedItems}
+        />
+        ;
       </div>
     </>
   );
