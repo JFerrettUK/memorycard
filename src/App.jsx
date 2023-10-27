@@ -7,6 +7,10 @@ import "./App.css";
 
 function App() {
   const [clickedItems, setClickedItems] = useState([]);
+  <FillFalseArray
+    clickedItems={clickedItems}
+    setClickedItems={setClickedItems}
+  />;
 
   return (
     <>
@@ -14,12 +18,10 @@ function App() {
         <h1>Memory Card</h1>
       </div>
       <div className="displayCards">
-        <ImageList />
-        <FillFalseArray
+        <ImageList
           clickedItems={clickedItems}
           setClickedItems={setClickedItems}
         />
-        ;
       </div>
     </>
   );

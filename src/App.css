@@ -8,31 +8,36 @@
 
 .image-container {
   display: grid;
+  justify-content: center;
+  align-items: c;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin: 20px;
   background-color: #c9505b;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 20px;
-  position: relative; /* Make the container a positioning context for absolute positioning */
+  position: relative;
 }
 
-/* Individual Image Styles */
 .image-item {
   box-sizing: border-box;
-  width: calc(100% - 40px);
+  width: 200px;
   height: 200px;
   object-fit: cover;
   background-color: #2d2d41;
   margin: 20px;
   border-radius: 8px;
-  border: #2d2d41 solid 2px;
-  position: relative; /* Make the image item a positioning context for absolute positioning */
+  box-shadow: 0 0 5px 2px rgba(45, 45, 65, 0.35);
+  position: relative;
+  font-size: medium;
 }
 
 .image-item:hover {
   background-color: #c9505b;
-  box-shadow: 0 0 20px 10px #2d2d41;
+  border: #2d2d41 1px solid;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.35);
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
 }
 
 /* Adjustments for Responsiveness */
@@ -70,4 +75,8 @@ h1:hover {
   text-align: center;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.trekImage {
+  border-radius: 8px;
 }
