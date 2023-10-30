@@ -35,7 +35,7 @@
 .image-item:hover {
   background-color: #c9505b;
   border: #2d2d41 1px solid;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.35);
   transform: scale(1.03);
   transition: transform 0.3s ease;
 }
@@ -60,6 +60,7 @@ h1 {
   background-size: 100% 10px;
   background-repeat: no-repeat;
   transition: background-size 0.7s, background-position 0.5s ease-in-out;
+  margin-bottom: 30px;
 }
 
 h1:hover {
@@ -79,4 +80,17 @@ h1:hover {
 
 .trekImage {
   border-radius: 8px;
+}
+
+.explText,
+.score {
+  color: #edc6a6;
+  margin-bottom: 30px;
+  justify-content: center;
+  display: flex;
+}
+
+.score {
+  font-size: x-large;
+  font-weight: 800;
 }

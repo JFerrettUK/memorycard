@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 
 function ImageList({ clickedItems, setClickedItems }) {
+  // State to manage the order of images
   const [imageOrder, setImageOrder] = useState([...Array(12).keys()]);
 
+  // Map of captains with their corresponding index
   const captains = {
     0: "Chakotay",
     1: "Sisko",
@@ -20,6 +22,7 @@ function ImageList({ clickedItems, setClickedItems }) {
     11: "Burnham",
   };
 
+  // Effect to shuffle the imageOrder when clickedItems change
   useEffect(() => {
     // Fisher-Yates shuffle algorithm
     const shuffledOrder = [...imageOrder];
@@ -30,17 +33,19 @@ function ImageList({ clickedItems, setClickedItems }) {
         shuffledOrder[i],
       ];
     }
+    // Set the shuffled order
     setImageOrder(shuffledOrder);
-    console.log(clickedItems);
   }, [clickedItems]); // Run once on mount to shuffle the order
 
   return (
     <div className="image-container">
+      {/* Map through the shuffled imageOrder to render images */}
       {imageOrder.map((index) => (
         <div
           key={index}
           className={`image-item imageItem${index}`}
           onClick={() => {
+            // Update clickedItems when an image is clicked
             setClickedItems((prevClickedItems) => {
               const newClickedItems = [...prevClickedItems];
               newClickedItems[index] = true;
@@ -49,11 +54,13 @@ function ImageList({ clickedItems, setClickedItems }) {
             console.log(`Clicked on an element with class: ${captains[index]}`);
           }}
         >
+          {/* Display the image with the corresponding index */}
           <img
             src={`/src/image${index}.jpg`}
             alt={`Image ${index}`}
             className="trekImage"
           />
+          {/* Display the captain's name */}
           <div className="imageText">{captains[index]}</div>
         </div>
       ))}

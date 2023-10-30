@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 
-function FillFalseArray({ clickedItems, setClickedItems }) {
+function FillFalseArray(clickedItems, setClickedItems) {
   useEffect(() => {
-    const itemsNoClicks = Array(12).fill("false");
+    const itemsNoClicks = Array(12).fill(false);
     setClickedItems(itemsNoClicks);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
