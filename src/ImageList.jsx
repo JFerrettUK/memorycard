@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
-function ImageList({ clickedItems, setClickedItems }) {
+function ImageList({ clickedItems, setClickedItems, lose, setLose }) {
   // State to manage the order of images
   const [imageOrder, setImageOrder] = useState([...Array(12).keys()]);
 
@@ -38,32 +38,47 @@ function ImageList({ clickedItems, setClickedItems }) {
   }, [clickedItems]); // Run once on mount to shuffle the order
 
   return (
-    <div className="image-container">
-      {/* Map through the shuffled imageOrder to render images */}
-      {imageOrder.map((index) => (
-        <div
-          key={index}
-          className={`image-item imageItem${index}`}
-          onClick={() => {
-            // Update clickedItems when an image is clicked
-            setClickedItems((prevClickedItems) => {
-              const newClickedItems = [...prevClickedItems];
-              newClickedItems[index] = true;
-              return newClickedItems;
-            });
-            console.log(`Clicked on an element with class: ${captains[index]}`);
-          }}
-        >
-          {/* Display the image with the corresponding index */}
-          <img
-            src={`/src/image${index}.jpg`}
-            alt={`Image ${index}`}
-            className="trekImage"
-          />
-          {/* Display the captain's name */}
-          <div className="imageText">{captains[index]}</div>
-        </div>
-      ))}
+    <div>
+      {/* Display "you lose" message only if lose is true */}
+      {lose && <div className="loseText">You lose</div>}
+
+      <div className="image-container">
+        {/* Map through the shuffled imageOrder to render images */}
+        {imageOrder.map((index) => (
+          <div
+            key={index}
+            className={`image-item imageItem${index}`}
+            onClick={() => {
+              // Update clickedItems when an image is clicked
+              setClickedItems((prevClickedItems) => {
+                const newClickedItems = [...prevClickedItems];
+                newClickedItems[index] = true;
+                return newClickedItems;
+              });
+              console.log(
+                `Clicked on an element with class: ${captains[index]}`
+              );
+              if (lose === true) {
+                setLose(false);
+              }
+              if (clickedItems[index] === true) {
+                console.log("already clicked");
+                setLose(true);
+                console.log("Lose: ", lose);
+              }
+            }}
+          >
+            {/* Display the image with the corresponding index */}
+            <img
+              src={`/src/image${index}.jpg`}
+              alt={`Image ${index}`}
+              className="trekImage"
+            />
+            {/* Display the captain's name */}
+            <div className="imageText">{captains[index]}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

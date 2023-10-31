@@ -1,15 +1,26 @@
 // App.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ImageList from "./ImageList.jsx";
-import FillFalseArray from "./FillFalseArray.jsx";
 import Scorecard from "./Scorecard.jsx";
 
 import "./App.css";
 
 function App() {
-  const [firstTime, setfirstTime] = useState(true);
+  const [lose, setLose] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
   const [clickedItems, setClickedItems] = useState([]);
-  FillFalseArray(clickedItems, setClickedItems);
+
+  // Move the logic directly into the component
+  useEffect(() => {
+    const fillFalseArray = () => {
+      const itemsNoClicks = Array(12).fill(false);
+      setClickedItems(itemsNoClicks);
+    };
+
+    if (lose) {
+      fillFalseArray();
+    }
+  }, [lose]);
 
   return (
     <>
@@ -20,12 +31,14 @@ function App() {
         clickedItems={clickedItems}
         setClickedItems={setClickedItems}
         firstTime={firstTime}
-        setFirstTime={setfirstTime}
+        setFirstTime={setFirstTime}
       />
       <div className="displayCards">
         <ImageList
           clickedItems={clickedItems}
           setClickedItems={setClickedItems}
+          lose={lose}
+          setLose={setLose}
         />
       </div>
     </>

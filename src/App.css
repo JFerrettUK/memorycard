@@ -83,14 +83,16 @@ h1:hover {
 }
 
 .explText,
-.score {
+.score,
+.loseText {
   color: #edc6a6;
   margin-bottom: 30px;
   justify-content: center;
   display: flex;
 }
 
-.score {
+.score,
+.loseText {
   font-size: x-large;
   font-weight: 800;
 }
