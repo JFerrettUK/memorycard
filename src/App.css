@@ -9,7 +9,6 @@
 .image-container {
   display: grid;
   justify-content: center;
-  align-items: c;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin: 20px;
