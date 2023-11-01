@@ -83,7 +83,7 @@ function ImageList({
           >
             {/* Display the image with the corresponding index */}
             <img
-              src={`/src/image${index}.jpg`}
+              src={`https://raw.githubusercontent.com/JFerrettUK/memorycard/main/src/image${index}.jpg`}
               alt={`Image ${index}`}
               className="trekImage"
             />
