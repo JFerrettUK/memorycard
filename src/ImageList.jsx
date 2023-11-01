@@ -2,7 +2,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
-function ImageList({ clickedItems, setClickedItems, lose, setLose }) {
+function ImageList({
+  clickedItems,
+  setClickedItems,
+  lose,
+  setLose,
+  prevScore,
+}) {
   // State to manage the order of images
   const [imageOrder, setImageOrder] = useState([...Array(12).keys()]);
 
@@ -22,7 +28,6 @@ function ImageList({ clickedItems, setClickedItems, lose, setLose }) {
     11: "Burnham",
   };
 
-  // Effect to shuffle the imageOrder when clickedItems change
   useEffect(() => {
     // Fisher-Yates shuffle algorithm
     const shuffledOrder = [...imageOrder];
@@ -35,12 +40,20 @@ function ImageList({ clickedItems, setClickedItems, lose, setLose }) {
     }
     // Set the shuffled order
     setImageOrder(shuffledOrder);
-  }, [clickedItems]); // Run once on mount to shuffle the order
+  }, [clickedItems, lose]); // Include lose as a dependency
 
+  useEffect(() => {
+    // Reset clickedItems when the user loses
+    if (lose) {
+      const itemsNoClicks = Array(12).fill(false);
+      setClickedItems(itemsNoClicks);
+    }
+  }, [lose]);
   return (
     <div>
-      {/* Display "you lose" message only if lose is true */}
-      {lose && <div className="loseText">You lose</div>}
+      {lose && (
+        <div className="loseText"> You lose - your score was {prevScore}</div>
+      )}
 
       <div className="image-container">
         {/* Map through the shuffled imageOrder to render images */}

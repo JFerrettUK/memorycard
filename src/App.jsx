@@ -9,6 +9,7 @@ function App() {
   const [lose, setLose] = useState(false);
   const [firstTime, setFirstTime] = useState(true);
   const [clickedItems, setClickedItems] = useState([]);
+  const [prevScore, setPrevScore] = useState([]);
 
   // Move the logic directly into the component
   useEffect(() => {
@@ -32,6 +33,8 @@ function App() {
         setClickedItems={setClickedItems}
         firstTime={firstTime}
         setFirstTime={setFirstTime}
+        prevScore={prevScore}
+        setPrevScore={setPrevScore}
       />
       <div className="displayCards">
         <ImageList
@@ -39,6 +42,7 @@ function App() {
           setClickedItems={setClickedItems}
           lose={lose}
           setLose={setLose}
+          prevScore={prevScore}
         />
       </div>
     </>

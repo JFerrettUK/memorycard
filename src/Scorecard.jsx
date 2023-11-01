@@ -3,12 +3,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import ReturnScore from "./ReturnScore.jsx";
 
-function Scorecard({ clickedItems, setClickedItems, firstTime, setFirstTime }) {
+function Scorecard({
+  clickedItems,
+  setClickedItems,
+  firstTime,
+  setFirstTime,
+  prevScore,
+  setPrevScore,
+}) {
   const score = ReturnScore(
     clickedItems,
     setClickedItems,
     firstTime,
-    setFirstTime
+    setFirstTime,
+    prevScore,
+    setPrevScore
   );
 
   return (
