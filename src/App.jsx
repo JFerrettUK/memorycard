@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageList from "./ImageList.jsx";
 import Scorecard from "./Scorecard.jsx";
+import GiphyImage from "./GiphyImage.jsx";
 
 import "./App.css";
 
@@ -45,6 +46,7 @@ function App() {
           prevScore={prevScore}
         />
       </div>
+      <GiphyImage />
     </>
   );
 }
