@@ -68,16 +68,11 @@ function ImageList({
                 newClickedItems[index] = true;
                 return newClickedItems;
               });
-              console.log(
-                `Clicked on an element with class: ${captains[index]}`
-              );
               if (lose === true) {
                 setLose(false);
               }
               if (clickedItems[index] === true) {
-                console.log("already clicked");
                 setLose(true);
-                console.log("Lose: ", lose);
               }
             }}
           >
