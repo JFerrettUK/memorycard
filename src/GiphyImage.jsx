@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
 function GiphyImage() {
-  const apiKey = import.meta.env.VITE_REACT_APP_GIPHY_API_KEY;
+  const apiKey = import.meta.env.VITE_GIPHY_API_KEY;
   const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
-    console.log(
-      "https://api.giphy.com/v1/gifs/search?q=star_trek&api_key=9AYuLDQ6CpsARu2ZGb4PLL4SgkRFOBD5"
-    );
+    if (!apiKey) {
+      console.error("Giphy API key is missing!");
+      return;
+    }
+
     // Fetch GIFs when the component mounts
     fetch(`https://api.giphy.com/v1/gifs/search?q=star_trek&api_key=${apiKey}`)
       .then((res) => res.json())
